@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +15,7 @@ public class MyActivity extends AppCompatActivity {
 
     private SharedPreferences myPreferenceRef;
     private SharedPreferences.Editor myPreferenceEditor;
+    private TextView prefTextRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +26,7 @@ public class MyActivity extends AppCompatActivity {
         myPreferenceRef = getSharedPreferences("MyAppPreferenceString", MODE_PRIVATE);
         myPreferenceEditor = myPreferenceRef.edit();
 
-        TextView prefTextRef = findViewById(R.id.prefText);
+        prefTextRef = findViewById(R.id.prefText);
         prefTextRef.setText(myPreferenceRef.getString("MyAppPreferenceString", "No preference found"));
 
         Button button = findViewById(R.id.ReturnActivity);
@@ -42,8 +44,8 @@ public class MyActivity extends AppCompatActivity {
 
         myPreferenceEditor.putString("MyAppPreferenceString", newPrefText.getText().toString());
         myPreferenceEditor.apply();
+        myPreferenceEditor.commit();
 
-        TextView prefTextRef = findViewById(R.id.prefText);
         prefTextRef.setText(myPreferenceRef.getString("MyAppPreferenceString", "No preference found."));
 
         newPrefText.setText("");
