@@ -14,16 +14,27 @@ public class MyActivity extends AppCompatActivity {
 
     private SharedPreferences myPreferenceRef;
     private SharedPreferences.Editor myPreferenceEditor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
 
-        myPreferenceRef = getPreferences(MODE_PRIVATE);
+
+        myPreferenceRef = getSharedPreferences("MyAppPreferenceString", MODE_PRIVATE);
         myPreferenceEditor = myPreferenceRef.edit();
 
         TextView prefTextRef = findViewById(R.id.prefText);
         prefTextRef.setText(myPreferenceRef.getString("MyAppPreferenceString", "No preference found"));
+
+        Button button = findViewById(R.id.ReturnActivity);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MyActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void savePref(View view) {
