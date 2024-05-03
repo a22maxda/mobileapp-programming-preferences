@@ -15,6 +15,39 @@ _Du kan ta bort all text som finns sedan tidigare_.
 
 Programkod ska se ut som exemplet nedan. Koden måste vara korrekt indenterad då den blir lättare att läsa vilket gör det lättare att hitta syntaktiska fel.
 
+För att fixa denna uppgift har först en ny aktivitet lagts till och döpts till MyActivity.
+Denna har sedan fått en EditText, Button och TextView widget.
+En knapp och funktionalitet har även lagts till i MainActivity som startar MyActivity
+
+SharedPreference variabler har lagts till i MyActivity med:
+//  private SharedPreferences myPreferenceRef;
+//  private SharedPreferences.Editor myPreferenceEditor;
+
+myPreferenceRef lagrar data som sparas mellan användingar av appen och
+myPreferenceEditor ändrar datan som lagras.
+
+Sedan har funktionen att ändra datan som lagras genom att skriva in en
+sträng i ett textfält i activity_my.
+//
+
+    public void savePref(View view) {
+    EditText newPrefText = findViewById(R.id.settingseditview);
+
+        //Sätter MyPreferenceEditor till strängen som läggts in i EditText widgeten "settingseditview"
+        myPreferenceEditor.putString("MyAppPreferenceString", newPrefText.getText().toString());
+        myPreferenceEditor.apply();
+
+//
+Sist har en onResume() lagts till i MainActivity som gör att TextView widgeten i MainActivity
+ändras till det som sparas från MyActivity.
+En knapp har även lagts till i MyActiivty som gör att man kan
+ta sig tillbaka till MainActivity.
+
+Knapparna för att spara preferences och byta mellan aktiviteter är separerade för att
+göra med möjligt att se vad för data man har lagt in i TextView widgeten i activity_my
+
+
+
 ```
 function errorCallback(error) {
     switch(error.code) {
@@ -33,7 +66,9 @@ function errorCallback(error) {
 
 Bilder läggs i samma mapp som markdown-filen.
 
-![](android.png)
+![](Prefs_1.png)
+![](Prefs_2.png)
+![](Prefs_3.png)
 
 Läs gärna:
 
