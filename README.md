@@ -45,7 +45,16 @@ Sist har en onResume() lagts till i MainActivity som gör att TextView widgeten 
 ändras till det som sparas från MyActivity.
 En knapp har även lagts till i MyActiivty som gör att man kan
 ta sig tillbaka till MainActivity.
+//
 
+    protected void onResume() {
+    super.onResume();
+
+        TextView prefTextRef = findViewById(R.id.preferenceText);
+        prefTextRef.setText(myPreferenceRef.getString("MyAppPreferenceString", "No preference found."));
+    }
+
+//
 Knapparna för att spara preferences och byta mellan aktiviteter är separerade för att
 göra med möjligt att se vad för data man har lagt in i TextView widgeten i activity_my
 
