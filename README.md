@@ -20,9 +20,12 @@ Denna har sedan fått en EditText, Button och TextView widget.
 En knapp och funktionalitet har även lagts till i MainActivity som startar MyActivity
 
 SharedPreference variabler har lagts till i MyActivity med:
-//  private SharedPreferences myPreferenceRef;
-//  private SharedPreferences.Editor myPreferenceEditor;
+//
 
+    private SharedPreferences myPreferenceRef;
+    private SharedPreferences.Editor myPreferenceEditor;
+
+//
 myPreferenceRef lagrar data som sparas mellan användingar av appen och
 myPreferenceEditor ändrar datan som lagras.
 
